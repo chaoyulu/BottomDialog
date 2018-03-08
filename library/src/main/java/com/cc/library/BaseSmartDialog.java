@@ -50,7 +50,6 @@ public abstract class BaseSmartDialog extends DialogFragment {
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.width = WindowUtils.getWindowWidth(mContext);
         attributes.gravity = Gravity.BOTTOM;
-
         window.setAttributes(attributes);
     }
 
