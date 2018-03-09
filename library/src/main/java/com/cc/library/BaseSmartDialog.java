@@ -38,6 +38,8 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
     protected int[] padding = {30, 30, 30, 30}; // Dialog的内边距
 
     protected String title = "Smart标题";
+    protected boolean titleVisible = true; // 是否显示标题
+    protected boolean cancelVisible = true; // 是否显示取消按钮
     protected RecyclerView.Adapter adapter;
     public static final int ORIENTATION_VERTICAL = 0x100;
     public static final int ORIENTATION_GRID = 0x101;
@@ -49,9 +51,11 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
 
     protected OnItemClickListener mOnItemClickListener;
     protected OnItemLongClickListener mOnItemLongClickListener;
+    protected RecyclerView.ItemDecoration mItemDecoration;
 
     @DrawableRes
     protected int backgroundRes = R.drawable.shape_round_corner; // 设置dialog的背景布局文件
+    protected boolean backgroundResEnable = true; // 是否可设置背景资源
 
     public View mView; // 指对话框显示View的区域
     protected View decorView; // 对话框所有区域，包括灰色阴影
@@ -118,14 +122,25 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
         // 默认提供的布局
         if (getLayoutRes() == R.layout.smart_default_dialog_layout) {
             TextView tvTitle = (TextView) mView.findViewById(R.id.tv_title);
-            tvTitle.setText(title);
+            if (titleVisible) {
+                tvTitle.setVisibility(View.VISIBLE);
+                tvTitle.setText(title);
+            } else {
+                tvTitle.setVisibility(View.GONE);
+            }
+
             TextView tvCancel = (TextView) mView.findViewById(R.id.tv_cancel);
-            tvCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AnimManager.getInstance().dismissAnimation(mView, BaseSmartDialog.this);
-                }
-            });
+            if (cancelVisible) {
+                tvCancel.setVisibility(View.VISIBLE);
+                tvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AnimManager.getInstance().dismissAnimation(mView, BaseSmartDialog.this);
+                    }
+                });
+            } else {
+                tvCancel.setVisibility(View.GONE);
+            }
             RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view);
             LinearLayoutManager manager = null;
             if (orientation == ORIENTATION_VERTICAL) manager = new LinearLayoutManager(mContext);
@@ -135,8 +150,12 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
             if (adapter == null) adapter = new SmartAdapter(mContext, list);
             recyclerView.setAdapter(adapter);
 
-            mView.findViewById(R.id.container).setBackgroundResource(backgroundRes);
-            tvCancel.setBackgroundResource(backgroundRes);
+            if (mItemDecoration != null) recyclerView.addItemDecoration(mItemDecoration);
+
+            if (backgroundResEnable) {
+                mView.findViewById(R.id.container).setBackgroundResource(backgroundRes);
+                tvCancel.setBackgroundResource(backgroundRes);
+            }
 
             if (mOnItemClickListener != null) {
                 ((SmartAdapter) adapter).setOnItemClickListener(mOnItemClickListener);

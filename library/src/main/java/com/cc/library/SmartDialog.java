@@ -54,11 +54,23 @@ public class SmartDialog extends BaseSmartDialog {
         return this;
     }
 
+    // 是否可设置背景资源
+    public SmartDialog backgroundResEnable(boolean enable) {
+        backgroundResEnable = enable;
+        return this;
+    }
+
     public SmartDialog padding(int left, int top, int right, int bottom) {
         padding[0] = left;
         padding[1] = top;
         padding[2] = right;
         padding[3] = bottom;
+        return this;
+    }
+
+    // 设置RecyclerView的间隔线
+    public SmartDialog itemDecoration(RecyclerView.ItemDecoration itemDecoration) {
+        mItemDecoration = itemDecoration;
         return this;
     }
 
@@ -72,6 +84,15 @@ public class SmartDialog extends BaseSmartDialog {
         return this;
     }
 
+    public SmartDialog titleVisible(boolean titleVisible) {
+        this.titleVisible = titleVisible;
+        return this;
+    }
+
+    public SmartDialog cancelVisible(boolean cancelVisible) {
+        this.cancelVisible = cancelVisible;
+        return this;
+    }
 
     // 设置RecyclerView展示方向
     public SmartDialog recyclerViewOrientation(int orientation) {
