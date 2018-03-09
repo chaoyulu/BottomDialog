@@ -8,6 +8,9 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,12 +31,14 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
     protected Context mContext;
     protected boolean isOutside = false; // 点击的区域是否在mView区域以外
     protected boolean isCancelableOutside = true; // 是否支持点击外部消失
-    protected int layoutRes;
+
+    @LayoutRes
+    protected int layoutRes = R.layout.smart_default_dialog_layout;
 
     protected int[] padding = {30, 30, 30, 30}; // Dialog的内边距
 
     protected String title = "Smart标题";
-//    protected RecyclerView.Adapter adapter;
+    protected RecyclerView.Adapter adapter;
     public static final int ORIENTATION_VERTICAL = 0x100;
     public static final int ORIENTATION_GRID = 0x101;
     protected int orientation = ORIENTATION_VERTICAL; // 默认方向垂直
@@ -121,25 +126,25 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
                     AnimManager.getInstance().dismissAnimation(mView, BaseSmartDialog.this);
                 }
             });
-//            RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view);
-//            LinearLayoutManager manager = null;
-//            if (orientation == ORIENTATION_VERTICAL) manager = new LinearLayoutManager(mContext);
-//            else if (orientation == ORIENTATION_GRID)
-//                manager = new GridLayoutManager(mContext, spanCount);
-//            recyclerView.setLayoutManager(manager);
-//            if (adapter == null) adapter = new SmartAdapter(mContext, list);
-//            recyclerView.setAdapter(adapter);
-//
-//            mView.findViewById(R.id.container).setBackgroundResource(backgroundRes);
-//            tvCancel.setBackgroundResource(backgroundRes);
-//
-//            if (mOnItemClickListener != null) {
-//                ((SmartAdapter) adapter).setOnItemClickListener(mOnItemClickListener);
-//            }
-//
-//            if (mOnItemLongClickListener != null) {
-//                ((SmartAdapter) adapter).setOnItemLongClickListener(mOnItemLongClickListener);
-//            }
+            RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view);
+            LinearLayoutManager manager = null;
+            if (orientation == ORIENTATION_VERTICAL) manager = new LinearLayoutManager(mContext);
+            else if (orientation == ORIENTATION_GRID)
+                manager = new GridLayoutManager(mContext, spanCount);
+            recyclerView.setLayoutManager(manager);
+            if (adapter == null) adapter = new SmartAdapter(mContext, list);
+            recyclerView.setAdapter(adapter);
+
+            mView.findViewById(R.id.container).setBackgroundResource(backgroundRes);
+            tvCancel.setBackgroundResource(backgroundRes);
+
+            if (mOnItemClickListener != null) {
+                ((SmartAdapter) adapter).setOnItemClickListener(mOnItemClickListener);
+            }
+
+            if (mOnItemLongClickListener != null) {
+                ((SmartAdapter) adapter).setOnItemLongClickListener(mOnItemLongClickListener);
+            }
         }
     }
 

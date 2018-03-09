@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.List;
@@ -94,10 +95,10 @@ public class SmartDialog extends BaseSmartDialog {
     }
 
     // 设置自定义适配器
-//    public SmartDialog adapter(RecyclerView.Adapter adapter) {
-//        this.adapter = adapter;
-//        return this;
-//    }
+    public SmartDialog adapter(RecyclerView.Adapter adapter) {
+        this.adapter = adapter;
+        return this;
+    }
 
     public SmartDialog items(List<String> items) {
         list = items;

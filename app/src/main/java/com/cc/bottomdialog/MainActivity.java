@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemLongClick(int position) {
                         Toast.makeText(MainActivity.this, "长按" + position, Toast.LENGTH_SHORT).show();
                     }
-                }).layoutRes(R.layout.smart_default_dialog_layout).display().animDuration(100);
+                }).display().animDuration(100);
             }
         });
     }
