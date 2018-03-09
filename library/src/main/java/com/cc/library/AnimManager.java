@@ -1,6 +1,5 @@
 package com.cc.library;
 
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -25,24 +24,23 @@ public class AnimManager {
         return instance;
     }
 
-    public AnimManager showAnimation(View view) {
+    AnimManager showAnimation(View view) {
         Animation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 0F, Animation.RELATIVE_TO_SELF, 1F,
                 Animation.RELATIVE_TO_SELF, 0F);
         animation.setDuration(duration);
         animation.setFillEnabled(true);
         animation.setFillAfter(true);
-        Log.i("showAnimation", view + "/");
         if (view != null) view.startAnimation(animation);
         return this;
     }
 
-    public AnimManager duration(long duration) {
+    AnimManager duration(long duration) {
         this.duration = duration;
         return this;
     }
 
-    public AnimManager dismissAnimation(View view, final AnimationCallback callback) {
+    AnimManager dismissAnimation(View view, final AnimationCallback callback) {
         Animation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 0F, Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 1F);

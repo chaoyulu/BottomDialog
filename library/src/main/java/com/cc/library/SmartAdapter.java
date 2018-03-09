@@ -1,5 +1,6 @@
 package com.cc.library;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,17 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SmartViewHol
     private List<String> mList;
     private LayoutInflater mInflater;
 
+    private OnItemClickListener mOnItemClickListener;
+    private OnItemLongClickListener mOnItemLongClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        mOnItemLongClickListener = onItemLongClickListener;
+    }
+
     public SmartAdapter(Context context, List<String> list) {
         mList = list;
         mInflater = LayoutInflater.from(context);
@@ -29,8 +41,24 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SmartViewHol
     }
 
     @Override
-    public void onBindViewHolder(SmartViewHolder holder, int position) {
+    public void onBindViewHolder(SmartViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.tvName.setText(mList.get(position));
+
+        holder.tvName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnItemClickListener != null) mOnItemClickListener.onItemClick(position);
+            }
+        });
+
+        holder.tvName.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (mOnItemLongClickListener != null)
+                    mOnItemLongClickListener.onItemLongClick(position);
+                return true;
+            }
+        });
     }
 
     @Override
