@@ -42,16 +42,31 @@ public class AnimManager {
         return this;
     }
 
-    public AnimManager dismissAnimation(View view) {
+    public AnimManager dismissAnimation(View view, final AnimationCallback callback) {
         Animation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 0F, Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 1F);
         animation.setDuration(duration);
-        animation.setDuration(duration);
         animation.setFillEnabled(true);
         animation.setFillAfter(true);
-        Log.i("dismissAnimation", view + "/");
         view.startAnimation(animation);
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                callback.onAnimationEnd();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
         return this;
     }
 }
