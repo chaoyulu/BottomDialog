@@ -5,5 +5,5 @@ package com.cc.library;
  */
 
 public interface OnItemClickListener {
-    void onItemClick(int position);
+    void onItemClick(int position, Item item);
 }

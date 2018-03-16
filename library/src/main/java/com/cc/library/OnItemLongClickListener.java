@@ -5,5 +5,5 @@ package com.cc.library;
  */
 
 public interface OnItemLongClickListener {
-    void onItemLongClick(int position);
+    void onItemLongClick(int position, Item item);
 }

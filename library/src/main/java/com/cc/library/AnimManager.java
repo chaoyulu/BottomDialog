@@ -24,7 +24,7 @@ public class AnimManager {
         return instance;
     }
 
-    AnimManager showAnimation(View view) {
+    public AnimManager showAnimation(View view) {
         Animation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 0F, Animation.RELATIVE_TO_SELF, 1F,
                 Animation.RELATIVE_TO_SELF, 0F);
@@ -35,12 +35,12 @@ public class AnimManager {
         return this;
     }
 
-    AnimManager duration(long duration) {
+    public AnimManager duration(long duration) {
         this.duration = duration;
         return this;
     }
 
-    AnimManager dismissAnimation(View view, final AnimationCallback callback) {
+    public AnimManager dismissAnimation(View view, final AnimationCallback callback) {
         Animation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 0F, Animation.RELATIVE_TO_SELF, 0F,
                 Animation.RELATIVE_TO_SELF, 1F);
