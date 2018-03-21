@@ -96,6 +96,7 @@ public abstract class BaseSmartDialog extends DialogFragment implements Animatio
         // 当设置了dialogHeight，则根据设置的高度显示，否则自适应高度
         if (dialogHeight > 0) attributes.height = dialogHeight;
         if (dialogWidth > 0) attributes.width = dialogWidth;
+        else attributes.width = -1;
         attributes.gravity = gravity;
         attributes.dimAmount = dimAmount;
         attributes.alpha = alpha;
