@@ -78,9 +78,9 @@ titleGravity | 标题显示位置 | Gravity.CENTER
 titleColor | 标题颜色 | #727272
 titleSize | 标题字体大小 | 16
 cancelVisible | 是否显示取消按钮 | true
-cancle | 隐藏Dialog | -
+cancel | 隐藏Dialog | -
 itemOrientation | RecyclerView子项布局方式(垂直[图二]/水平[图一]) | LinearLayout.VERTICAL
-recyclerViewOrientation | RecyclerView排布方式(垂直/Grid[图二]) | ORIENTATION_VERTICAL
+recyclerViewOrientation | RecyclerView排布方式(垂直/Grid[图二]) | BaseSmartDialog.ORIENTATION_VERTICAL
 spanCount | 列数（recyclerViewOrientation为GRID时生效） | 3
 adapter | 设置适配器 | SmartAdapter
 
