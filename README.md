@@ -98,14 +98,14 @@ items | 设置数据源 | -
 display | 显示Dialog | -
 layoutRes | 设置自定义布局 | -
 dialogHeight | 设置Dialog高度 | 包裹内容
-dialogWidth | 设置Dialog宽度 | 屏幕宽度
+dialogWidth | 设置Dialog宽度 | 屏幕宽度（若宽度不铺满屏幕，调用padding(0)即可）
 padding(padding) | 设置内边距 | 30
 padding(l,t,r,b) | 设置内边距 | 30
 gravity | Dialog的位置 | Gravity.BOTTOM
 animEnable | 是否启用Dialog从底部弹出的动画 | true
 animDuration | Dialog从底部弹出动画持续时间 | 500ms
 cancelableOutside | 点击Dialog外部是否可隐藏Dialog | true
-onOutsideClick | 点击Dialog外部区域事件监听（用于点击外部后判断做什么操作） | -
+onOutsideClick | 点击Dialog外部区域事件监听（用于点击外部后判断做什么操作，设置后点击外部Dialog不会自动消失，需要调用dialog.cancel()） | -
 dimAmount | 设置阴影部分的灰暗度 | 0.5F
 alpha | 设置Dialog透明度 | 1F
 bindViewListener | 绑定视图回调（可用于自定义layout的点击事件监听） | -
