@@ -98,7 +98,7 @@ items | 设置数据源 | -
 display | 显示Dialog | -
 layoutRes | 设置自定义布局 | -
 dialogHeight | 设置Dialog高度 | 包裹内容
-dialogWidth | 设置Dialog宽度 | 包裹内容
+dialogWidth | 设置Dialog宽度 | 屏幕宽度
 padding(padding) | 设置内边距 | 30
 padding(l,t,r,b) | 设置内边距 | 30
 gravity | Dialog的位置 | Gravity.BOTTOM
@@ -163,6 +163,7 @@ new SmartDialog().init(this)
             // 点击外部区域监听                 
         }
     })
+    // 为自定义布局的子控件设监听
     .bindViewListener(new BindViewListener() {
         @Override
         public void bind(View dialogView, final BaseSmartDialog dialog) {
