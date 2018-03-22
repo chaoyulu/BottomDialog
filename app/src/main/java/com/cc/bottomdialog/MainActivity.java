@@ -11,6 +11,7 @@ import com.cc.library.BaseSmartDialog;
 import com.cc.library.BindViewListener;
 import com.cc.library.Item;
 import com.cc.library.OnItemClickListener;
+import com.cc.library.OutsideClickListener;
 import com.cc.library.SmartDialog;
 
 import java.util.ArrayList;
@@ -55,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
                         .padding(20)
                         .itemOrientation(LinearLayout.VERTICAL)
                         .display().animDuration(400)
-//                        .onOutsideClick(new OutsideClickListener() {
-//                            @Override
-//                            public void outsideClick(boolean isOutside, BaseSmartDialog dialog) {
-//                                Toast.makeText(MainActivity.this, "点击了外部 " + isOutside, Toast.LENGTH_SHORT).show();
-//                            }
-//                        })
+                        .onOutsideClick(new OutsideClickListener() {
+                            @Override
+                            public void outsideClick(boolean isOutside, BaseSmartDialog dialog) {
+                                Toast.makeText(MainActivity.this, "点击了外部 " + isOutside, Toast.LENGTH_SHORT).show();
+                            }
+                        })
                         .bindViewListener(new BindViewListener() {
                             @Override
                             public void bind(View dialogView, final BaseSmartDialog dialog) {
