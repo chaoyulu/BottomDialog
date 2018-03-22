@@ -4,10 +4,6 @@
 
 ## **ScreenShot**
 
-![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_001.gif)
+![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_001.gif)![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_002.gif)
 
-![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_002.gif)
-
-![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_003.gif)
-
-![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_004.gif)
+![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_003.gif)![image](https://github.com/SmartCyl/BottomDialog/blob/master/screenshot/bd_004.gif)
